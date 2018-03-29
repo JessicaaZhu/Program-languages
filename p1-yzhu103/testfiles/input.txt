@@ -1,0 +1,16 @@
+main() {
+float a;
+float b;
+a = 1.0 * 3.0;
+print a;
+print b;
+{ 
+    float a;
+    a = 100.0;
+    a = a * 0.1;
+    print a; 
+    b = 2.0; 
+    print b;
+};
+print a * b;
+}
