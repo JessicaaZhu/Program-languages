@@ -1,0 +1,20 @@
+max([X],X).
+max([X|T],Res) :- max(T,Res1),
+	(X>Res1 -> Res is X 
+		; Res is Res1).
+
+deleteNList(N,L,Res) :- deleteNList1(1,N,L,Res).
+
+deleteNList1(_,_,[],[]).
+deleteNList1(N,N,[_|T],Res1) :- deleteNList1(1,N,T,Res1).
+deleteNList1(K,N,[X|T],[X|Res1]) :- K<N,K1 is K+1,deleteNList1(K1,N,T,Res1).
+
+replace_first_k(_,[],[]).
+replace_first_k(0,T,T).
+replace_first_k(K,[1|T],[8|Res]) :- K>0,K1 is K-1,replace_first_k(K1,T,Res).
+replace_first_k(K,[X|T],[X|Res]) :- replace_first_k(K,T,Res).
+
+position(X,L,Res) :- position1(X,L,Res,1).
+position1(_,[],[],_).
+position1(X,[X|T],[R|Res],R) :- R1 is R+1,position1(X,T,Res,R1).
+position1(X,[Y|T],Res,R) :- dif(X,Y),R1 is R+1,position1(X,T,Res,R1).
